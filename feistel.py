@@ -49,7 +49,7 @@ def fn3(number: str) -> str:
 def fn4(number: str) -> str: 
     return functions['f4'][int(number, 2)]
 
-def feistel(number: str) -> str:
+def feistel_enc(number: str) -> str:
     m = 2
     A = number[:m] # 2 bits in A
     B = number[m:] # 4 bits in B
@@ -59,15 +59,28 @@ def feistel(number: str) -> str:
                   3: fn3, 4: fn4}
 
     for i in range(h):
-        A, B = B, xor_str(A, funct_dict[i+1](B))
+        A, B = B, xor_str(A, funct_dict[i+1](B.zfill(4)))
+
+    return A + B
+
+def feistel_dec(number: str) -> str:
+    m = 2
+    A = number[:m]  # 2 bits in A
+    B = number[m:]  # 4 bits in B
+
+    h = 4  # number of steps
+    funct_dict = {4: fn1, 3: fn2, 
+                  2: fn3, 1: fn4}
+
+    for i in range(h, 0, -1):
+        A, B = B, xor_str(A, funct_dict[i](B.zfill(4)))
 
     return A + B
 
 
-
-
-
-if __name__ == "__main__": 
-
-    print(feistel('101101'))
-    print(feistel('101100'))
+if __name__ == "__main__":
+    encrypted = feistel_enc('101101')
+    decrypted = feistel_dec(encrypted)
+    
+    print(encrypted)  # 101100
+    print(decrypted)  # 101101
