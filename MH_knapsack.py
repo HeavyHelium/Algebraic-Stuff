@@ -32,7 +32,7 @@ class MerkleHellman:
     def encode(message):
         """
         it is assumed that the length of the message 
-        is with accordance to the exmaple
+        is in accordance with the exmaple
         """ 
         enc_m = []
         for i in range(0, len(message), 2):
