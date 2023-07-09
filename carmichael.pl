@@ -3,7 +3,6 @@ len([], 0).
 len([_ | T], N) :- len(T, N1), N is N1 + 1.
 
 
-%basically log base p
 timesIn(P, N, 0) :- N mod P =\= 0.
 timesIn(P, N, T) :- N mod P =:= 0, 
                     N1 is N div P, 
@@ -52,8 +51,8 @@ divCondCar(M) :- M > 1,
 nat(0). 
 nat(N) :- nat(N1), N is N1 + 1.
 
-CarmichaelNumber(Number) :- squareFree(Number), 
+carmichaelNumber(Number) :- squareFree(Number), 
                             divCondCar(Number).
 
-genCarmichaelNumbers(N) :- nat(N), 
-                           CarmichaelNumber(N).
+genCarmichaelNumbers(N) :- nat(N),
+                           carmichaelNumber(N).
