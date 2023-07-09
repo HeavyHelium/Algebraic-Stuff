@@ -1,4 +1,5 @@
 from polynomial import Polynomial, GF2
+
 def get_secret_key(b, a_key, modulo): 
     return (b ** a_key) % modulo
 

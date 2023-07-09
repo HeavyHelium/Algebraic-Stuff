@@ -123,9 +123,10 @@ class Polynomial:
 
 
 if __name__ == "__main__":
-    p1 = Polynomial({5: GF2(1), 4: GF2(1), 1: GF2(1)})
+    p1 = Polynomial({5: GF2(1), 4: GF2(1), 0: GF2(1)})
     p2 = Polynomial({3: GF2(1)})
     print(p1 + Polynomial({5: GF2(1)}))
     print(p1 / p2)
+    print(p1 % p2)
     #temp = Polynomial({0: GF2(0)})
     #print(temp + Polynomial({5: GF2(1)}))

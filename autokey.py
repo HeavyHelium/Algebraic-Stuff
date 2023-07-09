@@ -39,11 +39,25 @@ if __name__ == "__main__":
     ciphertext = "GXILBGLQQJAIPWBMRKAZBWYKKKUCRKG"
     substring = "GESTURE"
     find_keyword(ciphertext, substring)
-
+    
+    
+    temp = dict()
+    temp["OWLMLC"] = autokey_decrypt(ciphertext, 
+                                     "OWLMLC")
+    temp["GLAUBE"] = autokey_decrypt(ciphertext, "GLAUBE")
+    temp["QWTAUE"] = autokey_decrypt(ciphertext, "QWTAUE")
+    temp["QIKLOP"] = autokey_decrypt(ciphertext, "QIKLOP")
+    temp["DKWKNS"] = (autokey_decrypt(ciphertext, "DKWKNS"))
+    
+    for k, v in temp.items():
+        print(f"{k}: {v}")
 
 """
-OWLMLC
-GLAUBE -- AMIRACLEISAGESTUREWHICHGODMAKES
-QWTAUE
+
+OWLMLC: SBXZQETPTKKEWHICHGESTUREGSBIAGA
+GLAUBE: AMIRACLEISAGESTUREWHICHGODMAKES
+QWTAUE: QBPLHCVPBYTGUHAOYEGSBIAGESTUREC
+QIKLOP: QPYANRVBSJNRUVJDETGESTUREGCJXTC
+DKWKNS: DNMBOOIDEIMUHTXEFQTGESTUREQKYQP
 
 """

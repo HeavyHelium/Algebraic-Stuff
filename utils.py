@@ -59,8 +59,38 @@ def inverse_element_ring(elem, ring):
         return x % ring
     else:
         return None # elem and ring are not coprime
- 
+
+def discrete_log_bf(base, c, modulus): 
+    x = 1
+    while True: 
+        if pow(base, x, modulus) == c:
+            return x
+        x += 1
+
+def is_prime(number): 
+    for i in range(2, int(math.sqrt(number)) + 1):
+        if number % i == 0:
+            return False
+    return True
 
 
 if __name__ == "__main__":
     print(find_prime_factors(100))
+    print(find_prime_factors(353))
+    print(find_prime_factors(352))
+    print(discrete_log_bf(3, 135, 353))
+    
+    print()
+    for i in range(1, 1000):
+        if pow(2, i - 1, i) == 1 and not(is_prime(i)):
+            print(i, find_prime_factors(i))
+
+    print()
+    for i in range(1, 1000):
+        if pow(3, i - 1, i) == 1 and not(is_prime(i)):
+            print(i, find_prime_factors(i))
+
+    temp = 91
+    print((pow(3, 91) - 1) // 2)
+    for i in range(1, 256, 2): 
+        print((pow(3, i) - 1) // 2)
